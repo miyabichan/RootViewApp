@@ -16,8 +16,8 @@
 @synthesize button = button_;
 
 
-- (void) resetTabViewController {
-	[self.parentViewController.tabBarController setSelectedIndex:0u];
+- (void)resetTabViewController {
+	self.parentViewController.tabBarController.selectedIndex = 0u;
 	[self.view removeFromSuperview];
 	[self.parentViewController.view removeFromSuperview];
 	[self.parentViewController.tabBarController.view removeFromSuperview];
@@ -29,7 +29,8 @@
 - (void)logout {
 	[self resetTabViewController];
 	AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-	[delegate.window addSubview:delegate.rootViewController.view];
+	UIWindow* window = [[UIApplication sharedApplication] keyWindow];
+	[window addSubview:delegate.rootViewController.view];
 }
 
 #pragma mark -
